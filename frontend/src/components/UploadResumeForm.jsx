@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './UploadResumeForm.css';
 
 function UploadResumeForm() {
   const [file, setFile] = useState(null);
@@ -32,13 +33,19 @@ function UploadResumeForm() {
   };
 
   return (
-    <div>
-      <h2>Upload your resume (PDF or Word only)</h2>
-      <input type="file" accept=".pdf, .doc, .docx" onChange={handleFileSelect}></input>
-      <br />
-      <button onClick={handleSubmit}>Submit Resume</button>
-      <h2>Server Response:</h2>
-      <p>{response}</p>
+    <div className="form-wrapper">
+      <div className="form-card">
+        <h2 className="section-title">Upload your resume (PDF or Word only)</h2>
+        <input
+          type="file"
+          accept=".pdf, .doc, .docx"
+          onChange={handleFileSelect}
+        />
+        <br />
+        <button onClick={handleSubmit}>Submit Resume</button>
+        <h2 className="section-title">Server Response:</h2>
+        <p>{response}</p>
+      </div>
     </div>
   );
 }

@@ -1,0 +1,45 @@
+.form-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .form-card {
+    background-color: #262626;
+    padding: 24px 32px;
+    border-radius: 12px;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .section-title {
+    font-size: 20px;
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+  
+  input[type='file'] {
+    margin-bottom: 16px;
+    color: white;
+  }
+  
+  button {
+    background-color: #000;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+  
+  button:hover {
+    background-color: #444242;
+  }
+  
+  h2 {
+    margin-top: 20px;
+    font-size: 18px;
+  }
