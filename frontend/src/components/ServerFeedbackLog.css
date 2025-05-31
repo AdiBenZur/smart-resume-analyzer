@@ -1,0 +1,25 @@
+.feedback-log {
+    margin-top: 30px;
+    background-color: #1f1f1f;
+    padding: 20px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 0 12px rgba(0, 255, 128, 0.1);
+    border: 1px solid rgba(68, 142, 95, 0.4);
+    color: #e0e0e0;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  
+  .section-title {
+    font-size: 20px;
+    margin-bottom: 12px;
+    color: #44d27c;
+  }
+  
+  .response-text {
+    font-family: 'Courier New', monospace;
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }

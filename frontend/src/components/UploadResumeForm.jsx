@@ -1,9 +1,7 @@
-import { useState } from 'react';
 import './UploadResumeForm.css';
 
 function UploadResumeForm() {
   const [file, setFile] = useState(null);
-  const [response, setResponse] = useState('');
 
   const handleFileSelect = (event) => {
     setFile(event.target.files[0]);
@@ -43,8 +41,6 @@ function UploadResumeForm() {
         />
         <br />
         <button onClick={handleSubmit}>Submit Resume</button>
-        <h2 className="section-title">Server Response:</h2>
-        <p>{response}</p>
       </div>
     </div>
   );
