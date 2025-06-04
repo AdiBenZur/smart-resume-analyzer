@@ -1,6 +1,7 @@
 .form-wrapper {
-  align-items: center;
-  min-height: calc(100vh - 100px);
+    display: flex;
+    justify-content: center;
+    width: 100%;
   }
   
   .form-card {
@@ -37,5 +38,19 @@
   
   button:hover {
     background-color: #444242;
+  }
+
+  .loader {
+    margin-top: 16px;
+    font-weight: bold;
+    color: #44d27c;
+    font-size: 1.1rem;
+    animation: pulse 1s infinite ease-in-out;
+  }
+  
+  @keyframes pulse {
+    0% { opacity: 0.2; }
+    50% { opacity: 1; }
+    100% { opacity: 0.2; }
   }
   

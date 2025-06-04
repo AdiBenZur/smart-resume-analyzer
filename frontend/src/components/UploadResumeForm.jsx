@@ -1,7 +1,9 @@
 import './UploadResumeForm.css';
+import { useState } from 'react';
 
-function UploadResumeForm() {
+function UploadResumeForm({ setResponse }) {
   const [file, setFile] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleFileSelect = (event) => {
     setFile(event.target.files[0]);
@@ -13,9 +15,12 @@ function UploadResumeForm() {
       return;
     }
 
+    console.log('Starting upload...');
     // Send the resume to backend
     const formData = new FormData();
     formData.append('resume', file);
+
+    setIsLoading(true); // Activate the spinner
 
     try {
       const res = await fetch('http://localhost:3000/upload', {
@@ -27,6 +32,8 @@ function UploadResumeForm() {
       setResponse(dataResult);
     } catch (error) {
       console.error('Error connecting to the server:', error);
+    } finally {
+      setIsLoading(false); // Stop the spinner
     }
   };
 
@@ -41,6 +48,8 @@ function UploadResumeForm() {
         />
         <br />
         <button onClick={handleSubmit}>Submit Resume</button>
+
+        {isLoading && <div className="loader">Analyzing...</div>}
       </div>
     </div>
   );
