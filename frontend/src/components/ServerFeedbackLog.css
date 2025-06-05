@@ -18,8 +18,13 @@
     color: #44d27c;
   }
   
-  .response-text {
-    font-family: 'Courier New', monospace;
-    font-size: 0.95rem;
-    line-height: 1.4;
+  .highlighted-resume span {
+    background-color: rgba(255, 255, 0, 0.3);
+    padding: 2px 4px;
+    border-radius: 4px;
+  }
+  
+  .feedback-list {
+    margin-top: 12px;
+    padding-left: 20px;
   }

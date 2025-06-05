@@ -1,7 +1,9 @@
 import './UploadResumeForm.css';
+import { useState } from 'react';
 
-function UploadResumeForm() {
+function UploadResumeForm({ setResumeText, setFeedbackData }) {
   const [file, setFile] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleFileSelect = (event) => {
     setFile(event.target.files[0]);
@@ -17,16 +19,21 @@ function UploadResumeForm() {
     const formData = new FormData();
     formData.append('resume', file);
 
+    setIsLoading(true); // Activate the loader
+
     try {
       const res = await fetch('http://localhost:3000/upload', {
         method: 'POST',
         body: formData
       });
 
-      const dataResult = await res.text();
-      setResponse(dataResult);
+      const data = await res.json(); // the data is text + corrlate feedback
+      setResumeText(data.resumeText);
+      setFeedbackData(data.feedback);
     } catch (error) {
       console.error('Error connecting to the server:', error);
+    } finally {
+      setIsLoading(false); // Stop the loader
     }
   };
 
@@ -41,6 +48,8 @@ function UploadResumeForm() {
         />
         <br />
         <button onClick={handleSubmit}>Submit Resume</button>
+
+        {isLoading && <div className="loader">Analyzing...</div>}
       </div>
     </div>
   );
