@@ -15,6 +15,7 @@ function UploadResumeForm({ setResumeText, setFeedbackData }) {
       return;
     }
 
+    console.log('Starting upload...');
     // Send the resume to backend
     const formData = new FormData();
     formData.append('resume', file);
