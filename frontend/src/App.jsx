@@ -5,7 +5,7 @@ import ServerFeedbackLog from './components/ServerFeedbackLog';
 
 function App() {
   const [resumeText, setResumeText] = useState('');
-  const [feedbackData, setFeedbackData] = useState([]);
+  const [feedbackData, setFeedbackData] = useState('');
 
   return (
     <div className="app-container">

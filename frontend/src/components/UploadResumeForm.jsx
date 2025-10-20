@@ -30,7 +30,7 @@ function UploadResumeForm({ setResumeText, setFeedbackData }) {
 
       const data = await res.json(); // the data is text + corrlate feedback
       setResumeText(data.resumeText);
-      setFeedbackData(data.feedback);
+      setFeedbackData(data.feedbackText);
     } catch (error) {
       console.error('Error connecting to the server:', error);
     } finally {

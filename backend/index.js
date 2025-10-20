@@ -29,17 +29,23 @@ app.post('/upload', upload.single('resume'), async (req, res) => {
             messages: [
               {
                 role: 'user',
-                content: `Please provide professional resume feedback for the following resume text. Resume:${resumeText}`
+                content: `You are a resume feedback assistant. 
+                          Provide professional feedback for the following resume.
+                          Do not return JSON — just plain text with each comment on a new line.
+                          Resume:${resumeText}`
               }
             ]
           });
 
-          const aiFeedback = chatResponse.choices[0].message.content;
-          res.send(aiFeedback);
-    } catch (error) {
-        console.error('Error analyzing resume:', error);
-        res.status(500).send('Error analyzing resume');
-    }
+          const feedbackText = chatResponse.choices[0].message.content;
+          console.log("Resume Text:", resumeText);
+          console.log("Feedback Text:", feedbackText);
+
+          res.json({ resumeText, feedbackText });
+        } catch (error) {
+          console.error('Error analyzing resume:', error);
+          res.status(500).send('Error analyzing resume');
+        }
     
 });
 
