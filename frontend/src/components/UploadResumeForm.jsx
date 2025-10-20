@@ -1,7 +1,7 @@
 import './UploadResumeForm.css';
 import { useState } from 'react';
 
-function UploadResumeForm({ setResponse }) {
+function UploadResumeForm({ setResumeText, setFeedbackData }) {
   const [file, setFile] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -20,7 +20,7 @@ function UploadResumeForm({ setResponse }) {
     const formData = new FormData();
     formData.append('resume', file);
 
-    setIsLoading(true); // Activate the spinner
+    setIsLoading(true); // Activate the loader
 
     try {
       const res = await fetch('http://localhost:3000/upload', {
@@ -28,12 +28,13 @@ function UploadResumeForm({ setResponse }) {
         body: formData
       });
 
-      const dataResult = await res.text();
-      setResponse(dataResult);
+      const data = await res.json(); // the data is text + corrlate feedback
+      setResumeText(data.resumeText);
+      setFeedbackData(data.feedbackText);
     } catch (error) {
       console.error('Error connecting to the server:', error);
     } finally {
-      setIsLoading(false); // Stop the spinner
+      setIsLoading(false); // Stop the loader
     }
   };
 
